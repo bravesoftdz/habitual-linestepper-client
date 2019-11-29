@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Habitual Linestepper</p>
+        <p>Habitual Linestepper - Landing Page</p>
       </header>
     </div>
   );
