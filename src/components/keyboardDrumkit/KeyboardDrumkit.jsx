@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import "./KeyboardDrumkit.css";
-f;
+
 export const KeyboardDrumkit = props => {
   useEffect(() => {
     function playSound(e) {
