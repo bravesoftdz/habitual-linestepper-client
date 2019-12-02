@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import "./KeyboardDrumkit.css";
 
-export const KeyboardDrumkit = props => {
+const KeyboardDrumkit = props => {
   useEffect(() => {
     function playSound(e) {
       console.log("EEE", e.keyCode);
@@ -99,3 +99,5 @@ export const KeyboardDrumkit = props => {
     </div>
   );
 };
+
+export default KeyboardDrumkit;
