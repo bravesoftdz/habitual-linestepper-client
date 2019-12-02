@@ -5,11 +5,29 @@ import "./KeyboardDrumkit.css";
 export const KeyboardDrumkit = props => {
   useEffect(() => {
     function playSound(e) {
+      console.log("EEE", e.keyCode);
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
       if (!audio) return;
       audio.currentTime = 0;
-      audio.play();
+
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(_ => {
+            // Automatic playback started!
+            // Show playing UI.
+            console.log("audio played auto");
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+            console.log("playback prevented");
+          });
+      }
+
       key.classList.add("playing");
     }
 
@@ -24,6 +42,7 @@ export const KeyboardDrumkit = props => {
     );
 
     window.addEventListener("keydown", playSound);
+
     return () => window.removeEventListener("mouseup", props.onEvent);
   }, [props.onEvent]);
 
