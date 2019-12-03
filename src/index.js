@@ -4,7 +4,18 @@ import "./index.css";
 import AppRoutes from "./routes/index";
 import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<AppRoutes />, document.getElementById("root"));
+ReactDOM.render(
+  <div className="container">
+    <div className="header">
+      <p>Habitual Linestepper</p>
+    </div>
+
+    <div className="content">
+      <AppRoutes />
+    </div>
+  </div>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
