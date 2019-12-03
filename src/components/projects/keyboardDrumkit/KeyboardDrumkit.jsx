@@ -1,33 +1,28 @@
 import React, { useEffect } from "react";
 
 import "./KeyboardDrumkit.css";
+import sounds from "./sounds/index";
 
 const KeyboardDrumkit = props => {
   useEffect(() => {
     function playSound(e) {
-      console.log("EEE", e.keyCode);
-      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      const audio = sounds[e.keyCode];
 
       if (!audio) return;
-      audio.currentTime = 0;
 
       const playPromise = audio.play();
 
       if (playPromise !== undefined) {
         playPromise
           .then(_ => {
-            // Automatic playback started!
-            // Show playing UI.
             console.log("audio played auto");
           })
           .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
-            console.log("playback prevented");
+            console.log("playback prevented", error);
           });
       }
-
+      // add playing class to div
       key.classList.add("playing");
     }
 
@@ -87,15 +82,6 @@ const KeyboardDrumkit = props => {
           <span className="sound">tink</span>
         </div>
       </div>
-      <audio data-key="65" src="./sounds/clap.wav"></audio>
-      <audio data-key="83" src="./sounds/hihat.wav"></audio>
-      <audio data-key="68" src="./sounds/kick.wav"></audio>
-      <audio data-key="70" src="./sounds/openhat.wav"></audio>
-      <audio data-key="71" src="./sounds/boom.wav"></audio>
-      <audio data-key="72" src="./sounds/ride.wav"></audio>
-      <audio data-key="74" src="./sounds/snare.wav"></audio>
-      <audio data-key="75" src="./sounds/tom.wav"></audio>
-      <audio data-key="76" src="./sounds/tink.wav"></audio>s
     </div>
   );
 };
