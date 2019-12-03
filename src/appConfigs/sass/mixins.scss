@@ -1,0 +1,48 @@
+$defaultWebkitSupport: true;
+$defaultFirefoxSupport: true;
+$defaultExplorerSupport: true;
+$defaultOperaSupport: true;
+
+@mixin prefix-property(
+  $property,
+  $value,
+  $supportWebkit: $defaultWebkitSupport,
+  $supportFirefox: $defaultFirefoxSupport,
+  $supportExplorer: $defaultExplorerSupport,
+  $supportOpera: $defaultOperaSupport
+) {
+  @if $supportWebkit {
+    -webkit-#{$property}: $value;
+  }
+  @if $supportFirefox {
+    -moz-#{$property}: $value;
+  }
+  @if $supportExplorer {
+    -ms-#{$property}: $value;
+  }
+  @if $supportOpera {
+    -o-#{$property}: $value;
+  }
+
+  #{$property}: $value;
+}
+
+@mixin perspective($arguments) {
+  @include prefix-property(perspective, unquote($arguments));
+}
+
+@mixin transform-style($arguments) {
+  @include prefix-property(transform-style, unquote($arguments));
+}
+
+@mixin backface-visibility($arguments) {
+  @include prefix-property(backface-visibility, unquote($arguments));
+}
+
+@mixin transition($arguments) {
+  @include prefix-property(transition, unquote($arguments));
+}
+
+@mixin transform($arguments) {
+  @include prefix-property(transform, unquote($arguments));
+}

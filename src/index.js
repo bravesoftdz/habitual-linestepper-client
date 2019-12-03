@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <div className="container">
     <div className="header">
-      <p>Habitual Linestepper</p>
+      <h1 className="background-title">Habitual Linestepper</h1>
     </div>
 
     <div className="content">
