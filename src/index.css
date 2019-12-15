@@ -29,31 +29,23 @@ code {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-columns: 0.25fr 1fr;
-  grid-template-rows: 0.05fr 1fr;
-  grid-template-areas: "header header" "content content";
-}
-
-.header {
-  height: inherit;
-  width: inherit;
-  position: absolute;
-  grid-area: header;
+  grid-template-columns: 0.25fr 1fr 1fr 1fr 0.25fr;
+  grid-template-rows: 0.25fr 1fr 1fr 0.25fr;
+  grid-template-areas: ". . . . ." ". content content content ." ". content content content ." ". . . . .";
   background-color: #110e0e;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.background-title {
-  margin: 0;
-  color: rgba(235, 235, 173, 0.034);
-  font-size: 29rem;
 }
 
 .content {
   grid-area: content;
-  background-color: transparent;
   z-index: 1;
+  background-color: rgb(223, 232, 240);
+}
+
+.background-title {
+  margin: 0;
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  color: rgba(250, 249, 216, 0.034);
+  font-size: 29rem;
 }
