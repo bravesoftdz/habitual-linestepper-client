@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import clsx from "clsx";
 
 import Front from "./common/Front";
 import Back from "./common/Back";
@@ -16,55 +17,29 @@ export default class FlipCard extends Component {
     };
   }
 
+  flip = () => {
+    this.setState({ flipped: !this.state.flipped });
+  };
+
   render() {
     const { flipped } = this.state;
     const { children } = this.props;
 
     return (
       <div
-        className={style.flipperContainer}
-        onMouseEnter={() => this.setState({ flipped: !flipped })}
-        onMouseLeave={() => this.setState({ flipped: !flipped })}
+        className={clsx(style.cardContainer, { [style.flipped]: flipped })}
+        onMouseEnter={this.flip}
+        onMouseLeave={this.flip}
       >
-        <div className={style.flipper}>
-          {React.Children.map(children, child => {
-            if (!flipped && child.type.displayName === "front") {
-              return React.cloneElement(child, { ...child.props });
-            }
-            if (flipped && child.type.displayName === "back") {
-              return React.cloneElement(child, { ...child.props });
-            }
-          })}
-        </div>
+        {React.Children.map(children, child => {
+          if (child.type.displayName === "front") {
+            return React.cloneElement(child, { ...child.props });
+          }
+          if (child.type.displayName === "back") {
+            return React.cloneElement(child, { ...child.props });
+          }
+        })}
       </div>
     );
   }
 }
-
-// const FlipCard = ({ children }) => {
-//   let front = Front;
-//   let back = Back;
-
-//   const [flipped, setFlipped] = useState(false);
-
-//   return (
-//     <div
-//       className={style.flipperContainer}
-//       onClick={() => setFlipped(!flipped)}
-//     >
-//       <div className={style.flipper}>
-//         {React.Children.map(children, child => {
-//           console.log("CHILDREN: ", children);
-//           if (!flipped && child.type.displayName === "front") {
-//             return React.cloneElement(child, { ...child.props });
-//           }
-//           if (flipped && child.type.displayName === "back") {
-//             return React.cloneElement(child, { ...child.props });
-//           }
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default FlipCard;
