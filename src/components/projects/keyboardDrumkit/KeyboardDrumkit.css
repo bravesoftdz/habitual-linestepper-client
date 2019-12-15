@@ -1,4 +1,6 @@
 .keyboardDrumkit-wrapper {
+  height: 100%;
+  width: 100%;
   font-size: 10px;
   background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
   background-size: cover;
@@ -9,10 +11,12 @@
 
 .keys {
   display: flex;
-  flex: 1;
-  min-height: 100vh;
+  /* flex: 1; */
+  height: 100%;
+  width: 100%;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .key {
@@ -22,8 +26,8 @@
   font-size: 1.5rem;
   padding: 1rem 0.5rem;
   transition: all 0.07s ease;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   text-align: center;
   color: white;
   background: rgba(0, 0, 0, 0.4);

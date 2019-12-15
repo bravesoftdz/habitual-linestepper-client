@@ -43,7 +43,6 @@ const KeyboardDrumkit = props => {
 
   return (
     <div className="keyboardDrumkit-wrapper">
-      <header>Javascript Drum Kit</header>
       <div className="keys">
         <div data-key="65" className="key">
           <kbd>A</kbd>
