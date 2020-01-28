@@ -1,0 +1,27 @@
+.button-circle {
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+button-circle::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+}
+
+button:focus {
+  border-bottom: 2px solid hotpink;
+  outline: 0;
+}

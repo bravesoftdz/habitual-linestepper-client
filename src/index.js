@@ -1,13 +1,40 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faEnvelope,
+  faHome,
+  faCode,
+  faPenSquare
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  fab,
+  faGithub,
+  faTwitter,
+  faInstagram,
+  faLinkedin
+} from "@fortawesome/free-brands-svg-icons";
+
 import AppRoutes from "./routes/index";
 import * as serviceWorker from "./serviceWorker";
 
+import "./index.css";
+
+library.add(
+  fab,
+  faGithub,
+  faTwitter,
+  faInstagram,
+  faLinkedin,
+  faEnvelope,
+  faHome,
+  faCode,
+  faPenSquare
+);
+
 ReactDOM.render(
   <div className="container">
-    <h1 className="background-title">Habitual Linestepper</h1>
-
     <div className="content">
       <AppRoutes />
     </div>

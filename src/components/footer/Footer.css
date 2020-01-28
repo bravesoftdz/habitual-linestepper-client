@@ -1,0 +1,19 @@
+.footer {
+  grid-area: footer;
+  display: flex;
+}
+
+.footer-left {
+  display: inherit;
+  align-items: center;
+}
+.footer-flex {
+  flex-grow: 1;
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+}
+.footer-right {
+  display: inherit;
+  align-items: flex-end;
+}
