@@ -1,6 +1,3 @@
-import React from 'react'
-
-
 export default {
   0: {
     title: 'PROJECTS',

@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import './aboutPanel.css'
 import TickerTape from '../ticker/TickerTape'
 
