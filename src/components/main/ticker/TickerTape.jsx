@@ -9,7 +9,7 @@ const TickerTape = () => {
   return (
     <>
       <Ticker
-        offset="100%"
+        offset="run-in"
         speed={7}
         move={move}
       >
@@ -22,7 +22,7 @@ const TickerTape = () => {
             <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">GraphQL</span>
             <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">AWS</span>
             <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Redux</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">ReactNative</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">React Native</span>
             <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Azure</span>
             <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Typescript</span>
             <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">NestJS</span>
