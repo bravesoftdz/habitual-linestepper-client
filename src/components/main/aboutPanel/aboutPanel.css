@@ -1,3 +1,9 @@
+.about-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .pink-box {
   display: flex;
   flex-direction: column;

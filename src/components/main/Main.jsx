@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Socials } from "../socials/Socials";
 import { MenuPanel } from "./menuPanel/MenuPanel";
+import { AboutPanel } from "./aboutPanel/AboutPanel";
 
 import './main.css'
 
@@ -16,15 +17,17 @@ const handleMenu = (index) => {
   return (
     <div className="main-root">
 
-        <div className="menu-routes">
-          <button onClick={() => handleMenu(0)}>
-            <p style={{ margin: 0 }}>PROJECTS</p>
-          </button>
-          <button onClick={() => handleMenu(1)}>
-            <p style={{ margin: 0 }}>BLOG</p>
-          </button>
-          <Socials />
-        </div>
+      <div className="menu-routes">
+        <button onClick={() => handleMenu(0)}>
+          <p style={{ margin: 0 }}>PROJECTS</p>
+        </button>
+        <button onClick={() => handleMenu(1)}>
+          <p style={{ margin: 0 }}>BLOG</p>
+        </button>
+        <Socials />
+      </div>
+
+      {!menuOpen ? <AboutPanel /> : null}
 
       {menuOpen ? (
         <MenuPanel menuKey={menu} handleClose={() => setMenuOpen(false)}/>

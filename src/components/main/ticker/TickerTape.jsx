@@ -2,33 +2,33 @@ import React from 'react'
 import Ticker from 'react-ticker'
 
 
-          // <span>CSS/SASS</span>
-          // <span>GraphQL</span>
-          // <span>AWS</span>
-          // <span>Redux</span>
-          // <span>React Native</span>
+import './tickerTape.css';
 
 const TickerTape = () => {
+  const [move, setMove] = React.useState(true)
   return (
     <>
       <Ticker
         offset="100%"
-        speed={10}
+        speed={7}
+        move={move}
       >
         {() => (
           <>
-            <h1>React</h1>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">NodeJS</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">React</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">HTML</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">CSS/SASS</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">GraphQL</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">AWS</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Redux</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">ReactNative</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Azure</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Typescript</span>
+            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">NestJS</span>
           </>
         )}
       </Ticker>
-      <Ticker>
-        {() => (
-          <>
-          <h1>HTML</h1>
-          </>
-        )}
-      </Ticker>
-
     </>
   )
 }
