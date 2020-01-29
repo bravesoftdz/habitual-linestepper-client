@@ -1,0 +1,10 @@
+.pink-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px 20px 20px;
+  background-color: hotpink;
+  height: 100px;
+  width: 700;
+  margin-left: 30;
+  color: #fff;
+}

@@ -35,9 +35,7 @@ library.add(
 
 ReactDOM.render(
   <div className="container">
-    <div className="content">
       <AppRoutes />
-    </div>
   </div>,
   document.getElementById("root")
 );

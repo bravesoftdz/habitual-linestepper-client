@@ -1,12 +1,11 @@
 import React from "react";
 
-import "./App.css";
-import { MainMenu } from "./components/mainMenu/MainMenu";
+import { Main } from "./components/main/Main";
 
 function App() {
   return (
     <>
-      <MainMenu />
+      <Main />
     </>
   );
 }

@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { color, footerRightButtonConstants } from "./lib/buttonConsts";
 
-import "./Footer.css";
+import "./Socials.css";
 
-export const Footer = () => {
+export const Socials = () => {
   return (
-    <footer className="footer">
+    <div className="footer">
       {footerRightButtonConstants.map(({ icon, onClick, size }, i) => (
         <button key={`${i.toString()}`} onClick={() => onClick()}>
           <FontAwesomeIcon icon={icon} size={size} color={color} />
         </button>
       ))}
-    </footer>
+    </div>
   );
 };
