@@ -5,7 +5,12 @@ import Ticker from 'react-ticker'
 import './tickerTape.css';
 
 const TickerTape = () => {
-  const [move, setMove] = React.useState(true)
+  const [move, setMove] = React.useState(false)
+  React.useEffect(() => {
+    setTimeout(() => {
+      setMove(true);
+    }, 1000)
+  }, [])
   return (
     <>
       <Ticker
@@ -15,17 +20,17 @@ const TickerTape = () => {
       >
         {() => (
           <>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">NodeJS</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">React</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">HTML</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">CSS/SASS</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">GraphQL</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">AWS</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Redux</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">React Native</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Azure</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">Typescript</span>
-            <span onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)} className="ticker-item">NestJS</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>NodeJS</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>React</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>HTML</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>CSS/SASS</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>GraphQL</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>AWS</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>Redux</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>React Native</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>Azure</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>Typescript</span>
+            <span className="ticker-item" onMouseEnter={() => setMove(false)} onMouseLeave={() => setMove(true)}>NestJS</span>
           </>
         )}
       </Ticker>

@@ -8,7 +8,7 @@ export const AboutPanel = () => {
     <div className="about-root">
       <div className="pink-box">
         <h1>Hi, I'm Ben.</h1>
-        <p style={{marginTop: 0}}>I am currently a Senior Front-End Developer at ANS Group, Manchester, UK.</p>
+        <p style={{ marginTop: 0 }}>I am currently a Senior Front-End Developer at ANS Group, Manchester, UK.</p>
       </div>
       <TickerTape />
     </div>

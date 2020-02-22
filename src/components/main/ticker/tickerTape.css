@@ -3,4 +3,9 @@
   font-weight: 400;
   font-family: Montserrat;
   white-space: nowrap;
+   
+}
+
+.ticker-item:hover {
+  cursor: pointer;
 }
