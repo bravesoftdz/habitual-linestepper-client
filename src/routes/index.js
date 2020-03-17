@@ -5,13 +5,12 @@ import ProjectsRouter from "./projects";
 import BlogRouter from './blog'
 import App from "../App";
 
-
-const AppRoutes = (props) => (
-  <Router { ...props }>
-    <Route exact path="/" component={App} />
-    <Route path="/projects" component={ProjectsRouter} />
-    <Route path="/blog" component={BlogRouter} />
-  </Router>
+const AppRoutes = (props) => ( 
+    <Router { ...props }>
+      <Route exact path="/" component={App} />
+      <Route path="/projects" component={ProjectsRouter} />
+      <Route path="/blog" component={BlogRouter} />
+    </Router>
 );
 
 export default AppRoutes;

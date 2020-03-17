@@ -1,0 +1,11 @@
+{
+    "cSpell.words": [
+        "Consts"
+    ],
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false,
+		"editor.detectIndentation": false,
+		"javascript.preferences.quoteStyle": "single",
+		"prettier.singleQuote": true
+}

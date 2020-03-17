@@ -21,6 +21,8 @@ import AppRoutes from "./routes/index";
 import awsConfig from './appConfigs/awsConfig';
 import * as serviceWorker from "./serviceWorker";
 
+import AppContext from './appConfigs/contextProvider';
+
 import "./index.css";
 
 library.add(
@@ -60,9 +62,11 @@ Amplify.configure({
 });
 
 ReactDOM.render(
-  <div className="container">
+  <AppContext>
+    <div className="container">
       <AppRoutes />
-  </div>,
+    </div>
+  </AppContext>,
   document.getElementById("root")
 );
 
