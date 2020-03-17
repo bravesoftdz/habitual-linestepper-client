@@ -1,29 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Amplify from 'aws-amplify';
 
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faEnvelope,
   faHome,
   faCode,
   faPenSquare
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 import {
   fab,
   faGithub,
   faTwitter,
   faInstagram,
   faLinkedin
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons';
 
-import AppRoutes from "./routes/index";
+import AppRoutes from './routes/index';
 import awsConfig from './appConfigs/awsConfig';
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from './serviceWorker';
 
 import AppContext from './appConfigs/contextProvider';
 
-import "./index.css";
+import './index.css';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 library.add(
   fab,
@@ -53,10 +54,10 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "blogs",
+        name: 'blogs',
         endpoint: awsConfig.apiGateway.URL,
         region: awsConfig.apiGateway.REGION
-      },
+      }
     ]
   }
 });
@@ -67,7 +68,7 @@ ReactDOM.render(
       <AppRoutes />
     </div>
   </AppContext>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
