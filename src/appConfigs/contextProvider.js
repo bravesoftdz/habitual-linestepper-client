@@ -1,4 +1,5 @@
 import React from 'react';
+import { Auth } from 'aws-amplify';
 
 export const AuthContext = React.createContext(); // added this
 
@@ -12,10 +13,6 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
-      localStorage.setItem(
-        'habitual-linestepper-token',
-        JSON.stringify(action.payload.signInUserSession.idToken.jwtToken)
-      );
       return {
         ...state,
         isAuthenticated: true,
@@ -24,7 +21,7 @@ const reducer = (state, action) => {
         errorMessage: null
       };
     case 'LOGOUT':
-      localStorage.clear();
+      Auth.signOut();
       return {
         ...state,
         isAuthenticated: false,
