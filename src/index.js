@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Amplify from 'aws-amplify';
 
-// import config from './appConfigs/awsConfig';
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faEnvelope,
@@ -26,8 +24,6 @@ import AppContext from './appConfigs/contextProvider';
 
 import './index.css';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-
-console.log('PROCESS: ', process.env);
 
 library.add(
   fab,
@@ -64,30 +60,6 @@ Amplify.configure({
     ]
   }
 });
-
-// Amplify.configure({
-//   Auth: {
-//     mandatorySignIn: true,
-//     region: config.REGION,
-//     userPoolId: config.cognito.USER_POOL_ID,
-//     identityPoolId: config.cognito.IDENTITY_POOL_ID,
-//     userPoolWebClientId: config.cognito.APP_CLIENT_ID
-//   },
-//   Storage: {
-//     region: config.REGION,
-//     bucket: config.s3.MEDIA_BUCKET,
-//     identityPoolId: config.cognito.IDENTITY_POOL_ID
-//   },
-//   API: {
-//     endpoints: [
-//       {
-//         name: 'blogs',
-//         endpoint: config.apiGateway.API_URL,
-//         region: config.REGION
-//       }
-//     ]
-//   }
-// });
 
 ReactDOM.render(
   <AppContext>

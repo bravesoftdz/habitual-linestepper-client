@@ -16,8 +16,6 @@ const Login = () => {
     return email.length > 0 && password.length > 0;
   };
 
-  console.log('IsAuthenticated: ', state.isAuthenticated);
-
   const handleSubmit = async event => {
     event.preventDefault();
     setIsLoading(true);

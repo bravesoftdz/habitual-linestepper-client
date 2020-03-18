@@ -46,7 +46,7 @@ const reducer = (state, action) => {
 
 const AppContext = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  console.log('AUTH STATE: ', state);
+
   return (
     <AuthContext.Provider
       value={{
