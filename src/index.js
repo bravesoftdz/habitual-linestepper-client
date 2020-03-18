@@ -44,22 +44,22 @@ library.add(
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
-    region: process.env.REGION,
-    userPoolId: process.env.USER_POOL_ID,
-    identityPoolId: process.env.IDENTITY_POOL_ID,
-    userPoolWebClientId: process.env.APP_CLIENT_ID
+    region: process.env.REACT_APP_REGION,
+    userPoolId: process.env.REACT_APP_USER_POOL_ID,
+    identityPoolId: process.env.REACT_APP_IDENTITY_POOL_ID,
+    userPoolWebClientId: process.env.REACT_APP_APP_CLIENT_ID
   },
   Storage: {
-    region: process.env.REGION,
-    bucket: process.env.MEDIA_BUCKET,
-    identityPoolId: process.env.IDENTITY_POOL_ID
+    region: process.env.REACT_APP_REGION,
+    bucket: process.env.REACT_APP_MEDIA_BUCKET,
+    identityPoolId: process.env.REACT_APP_IDENTITY_POOL_ID
   },
   API: {
     endpoints: [
       {
         name: 'blogs',
-        endpoint: process.env.API_URL,
-        region: process.env.REGION
+        endpoint: process.env.REACT_APP_API_URL,
+        region: process.env.REACT_APP_REGION
       }
     ]
   }
