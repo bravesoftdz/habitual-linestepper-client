@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Amplify from 'aws-amplify';
 
+// import config from './appConfigs/awsConfig';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faEnvelope,
@@ -18,13 +20,14 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import AppRoutes from './routes/index';
-import awsConfig from './appConfigs/awsConfig';
 import * as serviceWorker from './serviceWorker';
 
 import AppContext from './appConfigs/contextProvider';
 
 import './index.css';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
+console.log('PROCESS: ', process.env);
 
 library.add(
   fab,
@@ -41,26 +44,50 @@ library.add(
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
-    region: awsConfig.cognito.REGION,
-    userPoolId: awsConfig.cognito.USER_POOL_ID,
-    identityPoolId: awsConfig.cognito.IDENTITY_POOL_ID,
-    userPoolWebClientId: awsConfig.cognito.APP_CLIENT_ID
+    region: process.env.REGION,
+    userPoolId: process.env.USER_POOL_ID,
+    identityPoolId: process.env.IDENTITY_POOL_ID,
+    userPoolWebClientId: process.env.APP_CLIENT_ID
   },
   Storage: {
-    region: awsConfig.s3.REGION,
-    bucket: awsConfig.s3.BUCKET,
-    identityPoolId: awsConfig.cognito.IDENTITY_POOL_ID
+    region: process.env.REGION,
+    bucket: process.env.MEDIA_BUCKET,
+    identityPoolId: process.env.IDENTITY_POOL_ID
   },
   API: {
     endpoints: [
       {
         name: 'blogs',
-        endpoint: awsConfig.apiGateway.URL,
-        region: awsConfig.apiGateway.REGION
+        endpoint: process.env.API_URL,
+        region: process.env.REGION
       }
     ]
   }
 });
+
+// Amplify.configure({
+//   Auth: {
+//     mandatorySignIn: true,
+//     region: config.REGION,
+//     userPoolId: config.cognito.USER_POOL_ID,
+//     identityPoolId: config.cognito.IDENTITY_POOL_ID,
+//     userPoolWebClientId: config.cognito.APP_CLIENT_ID
+//   },
+//   Storage: {
+//     region: config.REGION,
+//     bucket: config.s3.MEDIA_BUCKET,
+//     identityPoolId: config.cognito.IDENTITY_POOL_ID
+//   },
+//   API: {
+//     endpoints: [
+//       {
+//         name: 'blogs',
+//         endpoint: config.apiGateway.API_URL,
+//         region: config.REGION
+//       }
+//     ]
+//   }
+// });
 
 ReactDOM.render(
   <AppContext>

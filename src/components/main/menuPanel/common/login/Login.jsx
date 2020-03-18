@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
+import Loader from 'react-loader-spinner';
 
 import { AuthContext } from '../../../../../appConfigs/contextProvider';
 
@@ -9,6 +10,7 @@ const Login = () => {
   const { state, dispatch } = React.useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = () => {
     return email.length > 0 && password.length > 0;
@@ -18,7 +20,7 @@ const Login = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-
+    setIsLoading(true);
     try {
       const auth = await Auth.signIn(email, password);
 
@@ -27,6 +29,7 @@ const Login = () => {
           type: 'LOGIN',
           payload: auth
         });
+        setIsLoading(false);
       }
     } catch (e) {
       dispatch({
@@ -54,7 +57,17 @@ const Login = () => {
               onChange={e => setPassword(e.target.value)}
             />
             <button type="submit" disabled={!validateForm()}>
-              <span>GET IN</span>
+              {isLoading ? (
+                <Loader
+                  type="Hearts"
+                  color="#fff"
+                  height={14}
+                  width={53}
+                  timeout={3000}
+                />
+              ) : (
+                <span>GET IN</span>
+              )}
             </button>
           </form>
         </div>
@@ -67,7 +80,17 @@ const Login = () => {
             })
           }
         >
-          <span>GET OUT</span>
+          {isLoading ? (
+            <Loader
+              type="Hearts"
+              color="#fff"
+              height={16}
+              width={70}
+              timeout={3000}
+            />
+          ) : (
+            <span>GET OUT</span>
+          )}
         </button>
       )}
     </>

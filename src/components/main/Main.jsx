@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Transition } from "react-spring/renderprops";
+import React, { useState } from 'react';
+import { Transition } from 'react-spring/renderprops';
 
-import { Socials } from "../socials/Socials";
-import { MenuPanel } from "./menuPanel/MenuPanel";
-import { AboutPanel } from "./aboutPanel/AboutPanel";
-import Login from "./menuPanel/common/login/Login";
+import { Socials } from '../socials/Socials';
+import { MenuPanel } from './menuPanel/MenuPanel';
+import { AboutPanel } from './aboutPanel/AboutPanel';
+import Login from './menuPanel/common/login/Login';
 
-import { AuthContext } from "../../appConfigs/contextProvider";
+import { AuthContext } from '../../appConfigs/contextProvider';
 
-import "./main.css";
+import './main.css';
 
 export const Main = ({ windowHeight, windowWidth }) => {
   const { state } = React.useContext(AuthContext);
@@ -45,7 +45,7 @@ export const Main = ({ windowHeight, windowWidth }) => {
         <Transition
           items={!menu.isOpen}
           from={{ transform: `translate(${-windowWidth}px, 0)`, opacity: 0 }}
-          enter={{ transform: "translate(0px,0)", opacity: 1 }}
+          enter={{ transform: 'translate(0px,0)', opacity: 1 }}
           leave={{ transform: `translate(${-windowWidth}px, 0)`, opacity: 0 }}
           config={{ duration: 400 }}
         >
@@ -64,13 +64,13 @@ export const Main = ({ windowHeight, windowWidth }) => {
         <Transition
           items={menu.isOpen}
           from={{
-            width: "100%",
+            width: '100%',
             transform: `translate(${windowWidth}px, 0)`,
             opacity: 0
           }}
-          enter={{ width: "100%", transform: "translate(0px,0)", opacity: 1 }}
+          enter={{ width: '100%', transform: 'translate(0px,0)', opacity: 1 }}
           leave={{
-            width: "100%",
+            width: '100%',
             transform: `translate(${windowWidth}px, 0)`,
             opacity: 0
           }}
