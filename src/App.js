@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Auth } from 'aws-amplify';
 
 import { AuthContext } from './appConfigs/contextProvider';
@@ -14,21 +14,20 @@ function App() {
   let windowDimensions = useCurrentDimensions();
 
   useEffect(() => {
-    onLoad();
-  }, []);
-
-  const onLoad = async () => {
-    try {
-      await Auth.currentSession();
-      dispatch({ type: 'RESUME_SESSION' });
-    } catch (e) {
-      if (e !== 'No current user') {
-        console.log(e);
+    const onLoad = async () => {
+      try {
+        await Auth.currentSession();
+        dispatch({ type: 'RESUME_SESSION' });
+      } catch (e) {
+        if (e !== 'No current user') {
+          console.log(e);
+        }
       }
-    }
+      setIsAuthenticating(false);
+    };
 
-    setIsAuthenticating(false);
-  };
+    onLoad();
+  }, [dispatch]);
 
   return (
     <>
