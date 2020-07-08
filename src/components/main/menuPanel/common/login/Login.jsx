@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
 import Loader from 'react-loader-spinner';
 
-import { AuthContext } from '../../../../../appConfigs/contextProvider';
+import { AuthContext } from '../../../../../appConfigs/context/authContext/authContext';
 
 import './login.css';
 
 const Login = () => {
-  const { state, dispatch } = React.useContext(AuthContext);
+  const { authState, authDispatch } = React.useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -16,43 +16,43 @@ const Login = () => {
     return email.length > 0 && password.length > 0;
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     try {
       const auth = await Auth.signIn(email, password);
 
       if (auth != null) {
-        dispatch({
+        authDispatch({
           type: 'LOGIN',
-          payload: auth
+          payload: auth,
         });
         setIsLoading(false);
       }
     } catch (e) {
-      dispatch({
+      authDispatch({
         type: 'AUTH_ERROR',
-        payload: e
+        payload: e,
       });
     }
   };
 
   return (
     <>
-      {!state.isAuthenticated ? (
+      {!authState.isAuthenticated ? (
         <div className="login-form-wrapper">
           <form className="login-form" onSubmit={handleSubmit}>
             <input
               placeholder="Email"
               type="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               placeholder="Password"
               type="password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button type="submit" disabled={!validateForm()}>
               {isLoading ? (
@@ -73,8 +73,8 @@ const Login = () => {
         <button
           type=""
           onClick={() =>
-            dispatch({
-              type: 'LOGOUT'
+            authDispatch({
+              type: 'LOGOUT',
             })
           }
         >
