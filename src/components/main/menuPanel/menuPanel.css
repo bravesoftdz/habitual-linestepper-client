@@ -27,5 +27,7 @@
   padding-right: 30px;
 }
 
-
-
+.menu-item-text {
+  font-size: 18px;
+  font-weight: bold;
+}

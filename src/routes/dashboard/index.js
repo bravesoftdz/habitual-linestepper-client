@@ -3,21 +3,20 @@ import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 
-import BlogHome from '../../components/blog/BlogHome';
-import BlogPosts from '../../components/blog/BlogPosts';
+import Tasks from '../../components/dashboard/Tasks';
 
-const BlogRouter = () => {
+const DashboardRouter = () => {
   const location = useLocation();
+
   return (
     <TransitionGroup>
-      <CSSTransition key={location.key} classNames="slide" timeout={2000}>
+      <CSSTransition key={location.key} classNames="slide" timeout={5000}>
         <Switch location={location}>
-          <Route exact path="/blog/:page" component={BlogHome} />
-          <Route path="/blog/post/:slug" component={BlogPosts} />
+          <Route exact path="/dashboard/tasks" component={Tasks} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>
   );
 };
 
-export default BlogRouter;
+export default DashboardRouter;

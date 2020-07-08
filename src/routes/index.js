@@ -1,16 +1,19 @@
-import React from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import ProjectsRouter from './projects';
+import BlogRouter from './blog';
+import DashboardRouter from './dashboard';
+import App from '../App';
 
-import ProjectsRouter from "./projects";
-import BlogRouter from './blog'
-import App from "../App";
-
-const AppRoutes = (props) => ( 
-    <Router { ...props }>
+const AppRoutes = (props) => {
+  return (
+    <Switch {...props}>
       <Route exact path="/" component={App} />
       <Route path="/projects" component={ProjectsRouter} />
       <Route path="/blog" component={BlogRouter} />
-    </Router>
-);
+      <Route path="/dashboard" component={DashboardRouter} />
+    </Switch>
+  );
+};
 
 export default AppRoutes;

@@ -1,13 +1,19 @@
-import React from "react";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import menuItems from "./menuConsts";
-import "./menuPanel.css";
+import menuItems from './menuConsts';
+import './menuPanel.css';
 
 export const MenuPanel = ({ menuKey, handleClose }) => {
+  const history = useHistory();
+
   return (
     <div
       className="menu-root"
-      style={{ backgroundColor: menuItems[menuKey.index].background }}
+      style={{
+        backgroundColor:
+          menuKey != null ? menuItems[menuKey.index].background : '',
+      }}
     >
       <div className="menu-flex-column" />
       <div className="menu-inner-wrapper">
@@ -15,18 +21,23 @@ export const MenuPanel = ({ menuKey, handleClose }) => {
           <button onClick={() => handleClose()}>x</button>
           <h1
             style={{
-              color: menuItems[menuKey.index].color,
-              marginRight: "30px"
+              color: menuKey != null ? menuItems[menuKey.index].color : '',
+              marginRight: '30px',
             }}
           >
-            {menuItems[menuKey.index].title}
+            {menuKey && menuItems[menuKey.index].title}
           </h1>
         </div>
 
         <div className="menu-content">
-          {menuItems[menuKey.index].items.map(item => (
-            <span key={item}>{item}</span>
-          ))}
+          {menuKey &&
+            menuItems[menuKey.index].items.map((item) => (
+              <button onClick={() => history.push(`/projects/${item.route}`)}>
+                <span className="menu-item-text" key={item.name}>
+                  {item.name}
+                </span>
+              </button>
+            ))}
         </div>
       </div>
     </div>
