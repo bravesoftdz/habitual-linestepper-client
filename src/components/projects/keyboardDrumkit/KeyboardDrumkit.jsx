@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import "./KeyboardDrumkit.css";
-import sounds from "./sounds/index";
+import './KeyboardDrumkit.css';
+import sounds from './sounds/index';
 
-const KeyboardDrumkit = props => {
+const KeyboardDrumkit = (props) => {
   useEffect(() => {
     function playSound(e) {
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
@@ -11,34 +11,28 @@ const KeyboardDrumkit = props => {
 
       if (!audio) return;
 
-      const playPromise = audio.play();
-
-      if (playPromise !== undefined) {
-        playPromise
-          .then(_ => {
-            console.log("audio played auto");
-          })
-          .catch(error => {
-            console.log("playback prevented", error);
-          });
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.currentTime = 0;
       }
-      // add playing class to div
-      key.classList.add("playing");
+
+      key.classList.add('playing');
     }
 
     function removeTransition(e) {
-      if (e.propertyName !== "transform") return;
-      this.classList.remove("playing");
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playing');
     }
 
-    const keys = document.querySelectorAll(".key");
-    keys.forEach(key =>
-      key.addEventListener("transitionend", removeTransition)
+    const keys = document.querySelectorAll('.key');
+    keys.forEach((key) =>
+      key.addEventListener('transitionend', removeTransition)
     );
 
-    window.addEventListener("keydown", playSound);
+    window.addEventListener('keydown', playSound);
 
-    return () => window.removeEventListener("mouseup", props.onEvent);
+    return () => window.removeEventListener('mouseup', props.onEvent);
   }, [props.onEvent]);
 
   return (
