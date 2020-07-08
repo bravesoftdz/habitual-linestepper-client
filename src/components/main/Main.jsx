@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Transition } from 'react-spring/renderprops';
 
 import { Socials } from '../socials/Socials';
@@ -6,34 +6,58 @@ import { MenuPanel } from './menuPanel/MenuPanel';
 import { AboutPanel } from './aboutPanel/AboutPanel';
 import Login from './menuPanel/common/login/Login';
 
-import { AuthContext } from '../../appConfigs/contextProvider';
+import { AuthContext } from '../../appConfigs/context/authContext/authContext';
+import { MainMenuContext } from '../../appConfigs/context/mainMenuContext/mainMenuContext';
 
 import './main.css';
 
 export const Main = ({ windowHeight, windowWidth }) => {
-  const { state } = React.useContext(AuthContext);
-  const [menu, setMenu] = useState({
-    index: 0,
-    isOpen: false
-  });
+  const { authState } = React.useContext(AuthContext);
+  const { mainMenuState, mainMenuDispatch } = React.useContext(MainMenuContext);
 
-  let { isAuthenticated } = state;
-
-  const handleMenu = index => {
-    setMenu({ index, isOpen: true });
-  };
+  let { isAuthenticated } = authState;
 
   return (
     <div className="main-root">
       <div className="menu-routes">
-        <button onClick={() => handleMenu(0)}>
-          <span>PROJECTS</span>
-        </button>
-        <button onClick={() => handleMenu(1)}>
+        <>
+          {mainMenuState.index === 0 && mainMenuState.isOpen ? (
+            <button
+              onClick={() => mainMenuDispatch({ type: 'SET_MENU_CLOSED' })}
+            >
+              x
+            </button>
+          ) : null}
+          <button
+            onClick={() =>
+              mainMenuDispatch({
+                type: 'SET_MENU_OPEN',
+                index: 0,
+              })
+            }
+          >
+            <span>PROJECTS</span>
+          </button>
+        </>
+        <button
+          onClick={() =>
+            mainMenuDispatch({
+              type: 'SET_MENU_OPEN',
+              index: 1,
+            })
+          }
+        >
           <span>BLOG</span>
         </button>
         {isAuthenticated ? (
-          <button onClick={() => handleMenu(2)}>
+          <button
+            onClick={() =>
+              mainMenuDispatch({
+                type: 'SET_MENU_OPEN',
+                index: 2,
+              })
+            }
+          >
             <span>PERSONAL</span>
           </button>
         ) : null}
@@ -43,15 +67,15 @@ export const Main = ({ windowHeight, windowWidth }) => {
 
       <div className="content">
         <Transition
-          items={!menu.isOpen}
+          items={!mainMenuState.isOpen}
           from={{ transform: `translate(${-windowWidth}px, 0)`, opacity: 0 }}
           enter={{ transform: 'translate(0px,0)', opacity: 1 }}
           leave={{ transform: `translate(${-windowWidth}px, 0)`, opacity: 0 }}
           config={{ duration: 400 }}
         >
-          {toggle =>
+          {(toggle) =>
             toggle &&
-            (props => (
+            ((props) => (
               <div style={props}>
                 <div className="about-me">
                   <AboutPanel />
@@ -62,27 +86,29 @@ export const Main = ({ windowHeight, windowWidth }) => {
         </Transition>
 
         <Transition
-          items={menu.isOpen}
+          items={mainMenuState.isOpen}
           from={{
             width: '100%',
             transform: `translate(${windowWidth}px, 0)`,
-            opacity: 0
+            opacity: 0,
           }}
           enter={{ width: '100%', transform: 'translate(0px,0)', opacity: 1 }}
           leave={{
             width: '100%',
             transform: `translate(${windowWidth}px, 0)`,
-            opacity: 0
+            opacity: 0,
           }}
           config={{ duration: 500 }}
         >
-          {toggle =>
+          {(toggle) =>
             toggle &&
-            (props => (
+            ((props) => (
               <div style={props}>
                 <MenuPanel
-                  menuKey={menu}
-                  handleClose={() => setMenu({ index: 0, isOpen: false })}
+                  menuKey={mainMenuState}
+                  handleClose={() =>
+                    mainMenuDispatch({ type: 'SET_MENU_CLOSED' })
+                  }
                   windowWidth={windowWidth}
                 />
               </div>

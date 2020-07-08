@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 
-import { AuthContext } from './appConfigs/contextProvider';
+import { AuthContext } from './appConfigs/context/authContext/authContext';
 import { Main } from './components/main/Main';
 
 import useCurrentDimensions from './hooks/getWindowDimensions';

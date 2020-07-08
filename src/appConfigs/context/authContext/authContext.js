@@ -3,14 +3,14 @@ import { Auth } from 'aws-amplify';
 
 export const AuthContext = React.createContext(); // added this
 
-const initialState = {
+export const initialAuthState = {
   isAuthenticated: false,
   userEmail: null,
   token: null,
-  errorMessage: null
+  errorMessage: null,
 };
 
-const reducer = (state, action) => {
+export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
@@ -18,7 +18,7 @@ const reducer = (state, action) => {
         isAuthenticated: true,
         userEmail: action.payload.attributes.email,
         token: action.payload.signInUserSession.idToken.jwtToken,
-        errorMessage: null
+        errorMessage: null,
       };
     case 'LOGOUT':
       Auth.signOut();
@@ -26,37 +26,20 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         userEmail: null,
-        errorMessage: null
+        errorMessage: null,
       };
     case 'RESUME_SESSION':
       return {
         ...state,
-        isAuthenticated: true
+        isAuthenticated: true,
       };
     case 'AUTH_ERROR':
       return {
         ...state,
         isAuthenticated: false,
-        errorMessage: action.payload.message
+        errorMessage: action.payload.message,
       };
     default:
       return state;
   }
 };
-
-const AppContext = ({ children }) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
-
-  return (
-    <AuthContext.Provider
-      value={{
-        state,
-        dispatch
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export default AppContext;
