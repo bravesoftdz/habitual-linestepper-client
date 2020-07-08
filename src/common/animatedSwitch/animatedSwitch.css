@@ -1,0 +1,24 @@
+.animated-switch-enter {
+  opacity: 0;
+}
+
+.animated-switch-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+  transform: translateX(0%);
+}
+
+.animated-switch-exit {
+  opacity: 1;
+  /* position: absolute; */
+  /* top: 0;
+  left: 0;
+  width: 100%; */
+  transform: translateX(0%);
+}
+
+.animated-switch-exit-active {
+  opacity: 0;
+  transition: transform 1000ms ease-in-out;
+  transform: translateX(-100%);
+}
